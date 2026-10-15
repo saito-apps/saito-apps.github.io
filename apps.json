@@ -1,0 +1,114 @@
+[
+  {
+    "id": "shikigoke",
+    "icon": "images/shikigoke.png",
+    "screenshot": {
+      "ja": "images/shikigoke_screen_ja.jpg",
+      "en": "images/shikigoke_screen_en.jpg"
+    },
+    "appStore": {
+      "ja": "https://apps.apple.com/jp/app/id6820094844",
+      "en": "https://apps.apple.com/app/id6820094844"
+    },
+    "support": {
+      "ja": "shikigoke/",
+      "en": "shikigoke/en/"
+    },
+    "privacy": {
+      "ja": "shikigoke/privacy/",
+      "en": "shikigoke/en/privacy/"
+    },
+    "name": {
+      "ja": "四季苔",
+      "en": "Shikigoke"
+    },
+    "subtitle": {
+      "ja": "季節を育てる苔玉",
+      "en": "Seasonal Kokedama"
+    },
+    "category": {
+      "ja": "ゲーム ・ 無料",
+      "en": "Game · Free"
+    },
+    "short": {
+      "ja": "お世話しだいで育つ木が変わる、苔玉の育成アプリ。",
+      "en": "A kokedama growing game where your care decides the tree."
+    },
+    "description": {
+      "ja": "春・夏・秋・冬の種から、水・肥料・ひなたのお世話で、3日間かけて苔玉の木を育てます。お世話しだいで、育つ木が変わります。",
+      "en": "Pick a seed from spring, summer, autumn, or winter, and grow a tree on a kokedama over three days. Your care with water, fertilizer, and sunlight decides which tree it becomes."
+    },
+    "tags": {
+      "ja": [
+        "1日1分",
+        "枯れない",
+        "四季の庭に集める",
+        "広告なし"
+      ],
+      "en": [
+        "A minute a day",
+        "Never withers",
+        "Collect in the garden",
+        "No ads"
+      ]
+    },
+    "pickup": true,
+    "released": "2026-10-13"
+  },
+  {
+    "id": "spot-reminder",
+    "icon": "images/spot-reminder.png",
+    "screenshot": {
+      "ja": "images/spot-reminder_screen_ja.jpg",
+      "en": "images/spot-reminder_screen_en.jpg"
+    },
+    "appStore": {
+      "ja": "https://apps.apple.com/jp/app/id6821204134",
+      "en": "https://apps.apple.com/jp/app/id6821204134"
+    },
+    "support": {
+      "ja": "spot-reminder/",
+      "en": "spot-reminder/"
+    },
+    "privacy": {
+      "ja": "spot-reminder/privacy/",
+      "en": "spot-reminder/privacy/"
+    },
+    "name": {
+      "ja": "すぽっとリマインダー",
+      "en": "Spot Reminder"
+    },
+    "subtitle": {
+      "ja": "駅や店に着いたら買い物を思い出す",
+      "en": "Remember errands when you arrive"
+    },
+    "category": {
+      "ja": "仕事効率化 ・ 無料",
+      "en": "Productivity · Free"
+    },
+    "short": {
+      "ja": "よく行く店や駅に着いたら、用件を思い出させるリマインダー。",
+      "en": "A reminder that tells you your errands when you arrive at a store or station."
+    },
+    "description": {
+      "ja": "よく行く店や駅、自宅を一度登録しておけば、用件を書いて場所を選ぶだけ。その場所に着いたときに、通知でお知らせします。",
+      "en": "Register the stores, stations, and home you visit often, then just write an errand and pick a place. The app notifies you when you arrive there."
+    },
+    "tags": {
+      "ja": [
+        "着いたら通知",
+        "日時でも通知",
+        "アカウント不要",
+        "広告なし"
+      ],
+      "en": [
+        "Notifies on arrival",
+        "Date reminders too",
+        "No account",
+        "No ads"
+      ]
+    },
+    "pickup": true,
+    "released": "2026-10-13"
+  }
+]
