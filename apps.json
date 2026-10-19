@@ -110,5 +110,61 @@
     },
     "pickup": true,
     "released": "2026-10-13"
+  },
+  {
+    "id": "spot-memo",
+    "icon": "images/spot-memo.png",
+    "screenshot": {
+      "ja": "images/spot-memo_screen_ja.jpg",
+      "en": "images/spot-memo_screen_ja.jpg"
+    },
+    "appStore": {
+      "ja": "https://apps.apple.com/jp/app/id6823166585",
+      "en": "https://apps.apple.com/jp/app/id6823166585"
+    },
+    "support": {
+      "ja": "spot-memo/",
+      "en": "spot-memo/"
+    },
+    "privacy": {
+      "ja": "spot-memo/privacy/",
+      "en": "spot-memo/privacy/"
+    },
+    "name": {
+      "ja": "すぽっとメモ",
+      "en": "Spot Memo"
+    },
+    "subtitle": {
+      "ja": "行きたい場所の近くで通知",
+      "en": "Get notified near places you want to visit"
+    },
+    "category": {
+      "ja": "ライフスタイル ・ 無料",
+      "en": "Lifestyle · Free"
+    },
+    "short": {
+      "ja": "行きたい場所の近くに来たら、通知で教えてくれるアプリ。",
+      "en": "An app that notifies you when you're near a place you want to visit."
+    },
+    "description": {
+      "ja": "いつか行きたいお店や場所を登録しておくと、近くに来たときに通知でお知らせします。「近くにいたのに忘れてた」をなくします。",
+      "en": "Save the shops and places you want to visit someday, and the app notifies you when you're nearby. No more realizing too late that you were right next to one."
+    },
+    "tags": {
+      "ja": [
+        "近くに来たら通知",
+        "地図から登録",
+        "アカウント不要",
+        "広告なし"
+      ],
+      "en": [
+        "Notifies when nearby",
+        "Add from the map",
+        "No account",
+        "No ads"
+      ]
+    },
+    "pickup": true,
+    "released": "2026-10-19"
   }
 ]
