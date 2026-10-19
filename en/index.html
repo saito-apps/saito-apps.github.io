@@ -5,88 +5,129 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Apps by Saito</title>
 <meta name="description" content="iPhone apps made by independent developer Takeshi Saito.">
-<meta name="theme-color" content="#2563eb">
+<meta name="theme-color" content="#2c2a27">
 <link rel="icon" href="../images/avatar.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <div class="wrap">
-<header class="head">
-  <a class="me" href="../"><img src="../images/avatar.png" alt=""><span><strong>Apps by Saito</strong></span></a>
-  <div class="head-links">
-    <a class="pill" href="https://x.com/saito_dev" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>@saito_dev</span></a>
-    <a class="pill" href="../">日本語</a>
-  </div>
-</header>
-<p class="lead">I'm a software engineer at a company in Tokyo, building iPhone apps on my own on the side.</p>
-<main>
-  <p class="label">Pick up</p>
-  <article class="feature" data-pickup>
-    <div class="feature-body">
-      <div class="app-head">
-        <img src="../images/shikigoke.png" alt="">
-        <div><h2>Shikigoke</h2><p class="kind">Seasonal Kokedama ・ Game · Free</p></div>
+  <header>
+    <a class="me" href="../"><img src="../images/avatar.png" alt=""><span>Saito</span></a>
+    <nav>
+      <a href="#apps">Apps</a>
+      <a href="#contact" class="hide-sp">Contact</a>
+      <a href="https://x.com/saito_dev">X</a>
+      <a href="../">日本語</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">SAITO — INDIE iPHONE APPS</p>
+    <h1 class="mincho">Apps<br>by Saito<em>.</em></h1>
+    <p>I'm a software engineer at a company in Tokyo, building iPhone apps on my own on the side.</p>
+  </section>
+
+  <main id="apps">
+    <article class="app reveal">
+      <div class="shot">
+        <span class="num mincho">01</span>
+        <img class="phone" src="../images/shikigoke_screen_en.jpg" alt="Shikigoke screen" loading="lazy">
       </div>
-      <p class="desc">Pick a seed from spring, summer, autumn, or winter, and grow a tree on a kokedama over three days. Your care with water, fertilizer, and sunlight decides which tree it becomes.</p>
-      <ul class="tags"><li>A minute a day</li><li>Never withers</li><li>Collect in the garden</li><li>No ads</li></ul>
-      <div class="links"><a class="btn btn-blue" href="https://apps.apple.com/app/id6820094844"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c.02 2.43 2.13 3.24 2.15 3.25-.02.06-.34 1.15-1.11 2.28-.67.98-1.36 1.95-2.45 1.97-1.07.02-1.41-.63-2.64-.63-1.22 0-1.6.61-2.62.65-1.05.04-1.85-1.06-2.52-2.04-1.37-1.99-2.42-5.62-1.01-8.07.7-1.22 1.95-1.99 3.31-2.01 1.03-.02 2.01.7 2.64.7.63 0 1.81-.86 3.05-.73.52.02 1.98.21 2.92 1.59-.08.05-1.74 1.02-1.72 3.04zM14.37 4.65c.56-.68.93-1.62.83-2.56-.8.03-1.77.53-2.35 1.21-.52.6-.97 1.56-.85 2.48.9.07 1.81-.46 2.37-1.13z"/></svg>View on the App Store</a><a class="btn btn-line" href="../shikigoke/en/">Support</a><a class="btn btn-line" href="../shikigoke/en/privacy/">Privacy</a></div>
-    </div>
-    <div class="phone"><img src="../images/shikigoke_screen_en.jpg" alt="Shikigoke" loading="lazy"></div>
-  </article>
-  <article class="feature" data-pickup hidden>
-    <div class="feature-body">
-      <div class="app-head">
-        <img src="../images/spot-reminder.png" alt="">
-        <div><h2>Spot Reminder</h2><p class="kind">Remember errands when you arrive ・ Productivity · Free</p></div>
+      <div class="text">
+        <p class="kind">Game · Free<span class="new" data-until="2026-11-12">NEW</span></p>
+        <h2 class="mincho"><img src="../images/shikigoke.png" alt="">Shikigoke</h2>
+        <p class="sub">Seasonal Kokedama</p>
+        <p class="desc">Pick a seed from spring, summer, autumn, or winter, and grow a tree on a kokedama over three days. Your care with water, fertilizer, and sunlight decides which tree it becomes.</p>
+        <p class="tags"><span>A minute a day</span><span>Never withers</span><span>Collect in the garden</span><span>No ads</span></p>
+        <div class="links"><a href="https://apps.apple.com/app/id6820094844">View on the App Store<span>↗</span></a><a class="sub" href="../shikigoke/en/">Support</a><a class="sub" href="../shikigoke/en/privacy/">Privacy</a></div>
       </div>
-      <p class="desc">Register the stores, stations, and home you visit often, then just write an errand and pick a place. The app notifies you when you arrive there.</p>
-      <ul class="tags"><li>Notifies on arrival</li><li>Date reminders too</li><li>No account</li><li>No ads</li></ul>
-      <div class="links"><a class="btn btn-blue" href="https://apps.apple.com/jp/app/id6821204134"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c.02 2.43 2.13 3.24 2.15 3.25-.02.06-.34 1.15-1.11 2.28-.67.98-1.36 1.95-2.45 1.97-1.07.02-1.41-.63-2.64-.63-1.22 0-1.6.61-2.62.65-1.05.04-1.85-1.06-2.52-2.04-1.37-1.99-2.42-5.62-1.01-8.07.7-1.22 1.95-1.99 3.31-2.01 1.03-.02 2.01.7 2.64.7.63 0 1.81-.86 3.05-.73.52.02 1.98.21 2.92 1.59-.08.05-1.74 1.02-1.72 3.04zM14.37 4.65c.56-.68.93-1.62.83-2.56-.8.03-1.77.53-2.35 1.21-.52.6-.97 1.56-.85 2.48.9.07 1.81-.46 2.37-1.13z"/></svg>View on the App Store</a><a class="btn btn-line" href="../spot-reminder/">Support</a><a class="btn btn-line" href="../spot-reminder/privacy/">Privacy</a></div>
-    </div>
-    <div class="phone"><img src="../images/spot-reminder_screen_en.jpg" alt="Spot Reminder" loading="lazy"></div>
-  </article>
-  <article class="feature" data-pickup hidden>
-    <div class="feature-body">
-      <div class="app-head">
-        <img src="../images/spot-memo.png" alt="">
-        <div><h2>Spot Memo</h2><p class="kind">Get notified near places you want to visit ・ Lifestyle · Free</p></div>
+    </article>
+    <article class="app reveal">
+      <div class="shot">
+        <span class="num mincho">02</span>
+        <img class="phone" src="../images/spot-reminder_screen_en.jpg" alt="Spot Reminder screen" loading="lazy">
       </div>
-      <p class="desc">Save the shops and places you want to visit someday, and the app notifies you when you&#x27;re nearby. No more realizing too late that you were right next to one.</p>
-      <ul class="tags"><li>Notifies when nearby</li><li>Add from the map</li><li>No account</li><li>No ads</li></ul>
-      <div class="links"><a class="btn btn-blue" href="https://apps.apple.com/jp/app/id6823166585"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c.02 2.43 2.13 3.24 2.15 3.25-.02.06-.34 1.15-1.11 2.28-.67.98-1.36 1.95-2.45 1.97-1.07.02-1.41-.63-2.64-.63-1.22 0-1.6.61-2.62.65-1.05.04-1.85-1.06-2.52-2.04-1.37-1.99-2.42-5.62-1.01-8.07.7-1.22 1.95-1.99 3.31-2.01 1.03-.02 2.01.7 2.64.7.63 0 1.81-.86 3.05-.73.52.02 1.98.21 2.92 1.59-.08.05-1.74 1.02-1.72 3.04zM14.37 4.65c.56-.68.93-1.62.83-2.56-.8.03-1.77.53-2.35 1.21-.52.6-.97 1.56-.85 2.48.9.07 1.81-.46 2.37-1.13z"/></svg>View on the App Store</a><a class="btn btn-line" href="../spot-memo/">Support</a><a class="btn btn-line" href="../spot-memo/privacy/">Privacy</a></div>
+      <div class="text">
+        <p class="kind">Productivity · Free<span class="new" data-until="2026-11-12">NEW</span></p>
+        <h2 class="mincho"><img src="../images/spot-reminder.png" alt="">Spot Reminder</h2>
+        <p class="sub">Remember errands when you arrive</p>
+        <p class="desc">Register the stores, stations, and home you visit often, then just write an errand and pick a place. The app notifies you when you arrive there.</p>
+        <p class="tags"><span>Notifies on arrival</span><span>Date reminders too</span><span>No account</span><span>No ads</span></p>
+        <div class="links"><a href="https://apps.apple.com/jp/app/id6821204134">View on the App Store<span>↗</span></a><a class="sub" href="../spot-reminder/">Support</a><a class="sub" href="../spot-reminder/privacy/">Privacy</a></div>
+      </div>
+    </article>
+    <article class="app reveal">
+      <div class="shot">
+        <span class="num mincho">03</span>
+        <img class="phone" src="../images/spot-memo_screen_ja.jpg" alt="Spot Memo screen" loading="lazy">
+      </div>
+      <div class="text">
+        <p class="kind">Lifestyle · Free<span class="new" data-until="2026-11-18">NEW</span></p>
+        <h2 class="mincho"><img src="../images/spot-memo.png" alt="">Spot Memo</h2>
+        <p class="sub">Get notified near places you want to visit</p>
+        <p class="desc">Save the shops and places you want to visit someday, and the app notifies you when you&#x27;re nearby. No more realizing too late that you were right next to one.</p>
+        <p class="tags"><span>Notifies when nearby</span><span>Add from the map</span><span>No account</span><span>No ads</span></p>
+        <div class="links"><a href="https://apps.apple.com/jp/app/id6823166585">View on the App Store<span>↗</span></a><a class="sub" href="../spot-memo/">Support</a><a class="sub" href="../spot-memo/privacy/">Privacy</a></div>
+      </div>
+    </article>
+  </main>
+
+  <section class="contact reveal" id="contact">
+    <div>
+      <h2 class="mincho">Contact</h2>
+      <p>Questions or feedback? Send a note through the form (Japanese form; English is welcome).</p>
     </div>
-    <div class="phone"><img src="../images/spot-memo_screen_ja.jpg" alt="Spot Memo" loading="lazy"></div>
-  </article>
-  <p class="label">All apps</p>
-  <div class="grid">
-    <a class="mini" href="https://apps.apple.com/app/id6820094844"><img class="ic" src="../images/shikigoke.png" alt="">
-      <div><h3>Shikigoke<span class="new" data-until="2026-11-12">NEW</span></h3>
-      <p>A kokedama growing game where your care decides the tree.</p><span class="meta">Game · Free</span></div></a>
-    <a class="mini" href="https://apps.apple.com/jp/app/id6821204134"><img class="ic" src="../images/spot-reminder.png" alt="">
-      <div><h3>Spot Reminder<span class="new" data-until="2026-11-12">NEW</span></h3>
-      <p>A reminder that tells you your errands when you arrive at a store or station.</p><span class="meta">Productivity · Free</span></div></a>
-    <a class="mini" href="https://apps.apple.com/jp/app/id6823166585"><img class="ic" src="../images/spot-memo.png" alt="">
-      <div><h3>Spot Memo<span class="new" data-until="2026-11-18">NEW</span></h3>
-      <p>An app that notifies you when you&#x27;re near a place you want to visit.</p><span class="meta">Lifestyle · Free</span></div></a>
-  </div>
-  <div class="contact"><p>Questions or feedback? Send a note through the form (Japanese form; English is welcome).</p><a class="btn btn-line" href="https://docs.google.com/forms/d/e/1FAIpQLSfMMRAh4BeQ_ZcTgsZDuV5MzYL22TjPRAj4yL7NFHdgxtLDCQ/viewform">Contact</a></div>
-</main>
-<footer>© 2026 Takeshi Saito</footer>
+    <div class="links"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfMMRAh4BeQ_ZcTgsZDuV5MzYL22TjPRAj4yL7NFHdgxtLDCQ/viewform">Contact form<span>↗</span></a></div>
+  </section>
+
+  <footer>
+    <span class="mincho">Apps by Saito</span>
+    <span>© 2026 Takeshi Saito</span>
+  </footer>
 </div>
 <script>
-(function () {
-  var cards = document.querySelectorAll('[data-pickup]');
-  if (cards.length >= 2) {
-  var pick = Math.floor(Math.random() * cards.length);
-  cards.forEach(function (c, i) { c.hidden = i !== pick; });
+(() => {
+  // NEW の印：期限を過ぎていたら消す
+  const today = new Date().toISOString().slice(0, 10);
+  document.querySelectorAll('[data-until]').forEach(n => { if (today >= n.dataset.until) n.remove(); });
+
+  // 見出しを一文字ずつに分け、墨がにじむように出す
+  const h1 = document.querySelector('.hero h1');
+  let i = 0;
+  [...h1.childNodes].forEach(n => {
+    if (n.nodeType !== 3) return;
+    const frag = document.createDocumentFragment();
+    [...n.textContent].forEach(c => {
+      const sp = document.createElement('span');
+      sp.className = 'ch'; sp.textContent = c; sp.style.setProperty('--i', i++);
+      frag.append(sp);
+    });
+    n.replaceWith(frag);
+  });
+  h1.style.setProperty('--n', i);
+
+  // 各段がスクロールでふわっと出る
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    }), { threshold: .12 });
+    els.forEach(el => io.observe(el));
+  } else {
+    els.forEach(el => el.classList.add('in'));
   }
-})();
-(function () {
-  var today = new Date().toISOString().slice(0, 10);
-  document.querySelectorAll('[data-until]').forEach(function (n) { if (today >= n.dataset.until) n.remove(); });
+
+  // 枠の上をカーソルの光がなでる
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.shot').forEach(el => el.addEventListener('pointermove', ev => {
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', (ev.clientX - r.left) + 'px');
+    el.style.setProperty('--my', (ev.clientY - r.top) + 'px');
+  }));
 })();
 </script>
 </body>

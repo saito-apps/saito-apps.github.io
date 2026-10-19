@@ -2,125 +2,169 @@
 """開発者のトップページ「Saitoの個人開発アプリ」(index.html・en/index.html)を apps.json から作る。
 
 アプリを足すときは apps.json に1件書き足して `python3 build.py` を実行する。
-「アプリ一覧」には全アプリを並べ、「ピックアップ」(大きなカード)は "pickup": true(省略時true)のアプリから開くたびにランダムで1つ出す。
-各項目の書き方は apps.json の四季苔を見本にする(appStore・support・privacy・screenshot・tags は省略可)。
+アプリは apps.json の順に、画面の枠と説明を左右交互に並べる。
+各項目の書き方は apps.json の四季苔を見本にする(appStore・support・privacy・screenshot・tags・released は省略可)。
 """
-import datetime as dt, html, json, sys
+import datetime as dt, html, json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 X_ID = "saito_dev"  # Xのアカウント(@なし)
 NEW_DAYS = 30  # 公開日("released")から何日間「NEW」を出すか
 FORM = "https://docs.google.com/forms/d/e/1FAIpQLSfMMRAh4BeQ_ZcTgsZDuV5MzYL22TjPRAj4yL7NFHdgxtLDCQ/viewform"
-APPLE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c.02 2.43 2.13 3.24 2.15 3.25-.02.06-.34 1.15-1.11 2.28-.67.98-1.36 1.95-2.45 1.97-1.07.02-1.41-.63-2.64-.63-1.22 0-1.6.61-2.62.65-1.05.04-1.85-1.06-2.52-2.04-1.37-1.99-2.42-5.62-1.01-8.07.7-1.22 1.95-1.99 3.31-2.01 1.03-.02 2.01.7 2.64.7.63 0 1.81-.86 3.05-.73.52.02 1.98.21 2.92 1.59-.08.05-1.74 1.02-1.72 3.04zM14.37 4.65c.56-.68.93-1.62.83-2.56-.8.03-1.77.53-2.35 1.21-.52.6-.97 1.56-.85 2.48.9.07 1.81-.46 2.37-1.13z"/></svg>'
-XLOGO = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>'
+THEME = "#2c2a27"  # style.css の --paper と同じ色
 
 TEXT = {
-    "ja": dict(lang_link=("en/", "English"), tagline="Saitoの個人開発アプリ",
+    "ja": dict(lang_link=("en/", "English"), title="Saitoの個人開発アプリ", heading="Saitoの<br>個人開発アプリ",
                lead="都内の会社で働く、エンジニアの端くれです。仕事のかたわら、個人で iPhone アプリを作っています。",
-               featured="ピックアップ", all="アプリ一覧", soon="近日公開", store="App Store で見る", support="サポート", privacy="プライバシー",
-               contact="ご質問・ご意見は、フォームからお気軽にどうぞ。", form="お問い合わせ", new="NEW",
-               meta="Takeshi Saito が個人で開発している iPhone アプリの一覧です。"),
-    "en": dict(lang_link=("../", "日本語"), tagline="Apps by Saito",
+               nav_apps="アプリ", soon="近日公開", store="App Store で見る", support="サポート", privacy="プライバシー",
+               contact_title="お問い合わせ", contact="ご質問・ご意見は、フォームからお気軽にどうぞ。", form="お問い合わせフォーム",
+               new="NEW", screen="の画面", meta="Takeshi Saito が個人で開発している iPhone アプリの一覧です。"),
+    "en": dict(lang_link=("../", "日本語"), title="Apps by Saito", heading="Apps<br>by Saito",
                lead="I'm a software engineer at a company in Tokyo, building iPhone apps on my own on the side.",
-               featured="Pick up", all="All apps", soon="Coming soon", store="View on the App Store", support="Support", privacy="Privacy",
-               contact="Questions or feedback? Send a note through the form (Japanese form; English is welcome).", form="Contact", new="NEW",
-               meta="iPhone apps made by independent developer Takeshi Saito."),
+               nav_apps="Apps", soon="Coming soon", store="View on the App Store", support="Support", privacy="Privacy",
+               contact_title="Contact", contact="Questions or feedback? Send a note through the form (Japanese form; English is welcome).",
+               form="Contact form", new="NEW", screen=" screen", meta="iPhone apps made by independent developer Takeshi Saito."),
 }
 
 def e(s): return html.escape(s, quote=True)
 
-def pickup_card(a, lang, t, pre, index):
-    tags = "".join(f"<li>{e(x)}</li>" for x in a.get("tags", {}).get(lang, []))
+def new_badge(a, t):
+    if not a.get("released"):
+        return ""
+    until = dt.date.fromisoformat(a["released"]) + dt.timedelta(days=NEW_DAYS)
+    if dt.date.today() >= until:  # ページを作った時点で期限切れなら出さない。期限は表示時にもJavaScriptで確かめる
+        return ""
+    return f'<span class="new" data-until="{until.isoformat()}">{t["new"]}</span>'
+
+def app_section(a, lang, t, pre, index):
+    name = e(a["name"][lang])
+    if a.get("screenshot"):
+        visual = f'<img class="phone" src="{pre}{a["screenshot"][lang]}" alt="{name}{t["screen"]}" loading="lazy">'
+    else:
+        visual = f'<img class="big-icon" src="{pre}{a["icon"]}" alt="">'
+    tags = "".join(f"<span>{e(x)}</span>" for x in a.get("tags", {}).get(lang, []))
     links = []
     if a.get("appStore"):
-        links.append(f'<a class="btn btn-blue" href="{a["appStore"][lang]}">{APPLE}{t["store"]}</a>')
+        links.append(f'<a href="{a["appStore"][lang]}">{t["store"]}<span>↗</span></a>')
     else:
-        links.append(f'<span class="btn btn-soon">{t["soon"]}</span>')
+        links.append(f'<span class="soon">{t["soon"]}</span>')
     if a.get("support"):
-        links.append(f'<a class="btn btn-line" href="{pre}{a["support"][lang]}">{t["support"]}</a>')
+        links.append(f'<a class="sub" href="{pre}{a["support"][lang]}">{t["support"]}</a>')
     if a.get("privacy"):
-        links.append(f'<a class="btn btn-line" href="{pre}{a["privacy"][lang]}">{t["privacy"]}</a>')
-    shot = (f'<div class="phone"><img src="{pre}{a["screenshot"][lang]}" alt="{e(a["name"][lang])}" loading="lazy"></div>'
-            if a.get("screenshot") else "")
-    hidden = "" if index == 0 else " hidden"
+        links.append(f'<a class="sub" href="{pre}{a["privacy"][lang]}">{t["privacy"]}</a>')
     return f'''
-  <article class="feature{'' if shot else ' no-shot'}" data-pickup{hidden}>
-    <div class="feature-body">
-      <div class="app-head">
-        <img src="{pre}{a["icon"]}" alt="">
-        <div><h2>{e(a["name"][lang])}</h2><p class="kind">{e(a["subtitle"][lang])} ・ {e(a["category"][lang])}</p></div>
+    <article class="app reveal">
+      <div class="shot">
+        <span class="num mincho">{index:02d}</span>
+        {visual}
       </div>
-      <p class="desc">{e(a["description"][lang])}</p>
-      <ul class="tags">{tags}</ul>
-      <div class="links">{"".join(links)}</div>
-    </div>
-    {shot}
-  </article>'''
+      <div class="text">
+        <p class="kind">{e(a["category"][lang])}{new_badge(a, t)}</p>
+        <h2 class="mincho"><img src="{pre}{a["icon"]}" alt="">{name}</h2>
+        <p class="sub">{e(a["subtitle"][lang])}</p>
+        <p class="desc">{e(a["description"][lang])}</p>
+        {f'<p class="tags">{tags}</p>' if tags else ''}
+        <div class="links">{"".join(links)}</div>
+      </div>
+    </article>'''
 
-def list_card(a, lang, t, pre):
-    href = a["appStore"][lang] if a.get("appStore") else (pre + a["support"][lang] if a.get("support") else "#")
-    new = ""
-    if a.get("released"):
-        until = dt.date.fromisoformat(a["released"]) + dt.timedelta(days=NEW_DAYS)
-        if dt.date.today() < until:  # ページを作った時点で期限切れなら出さない。期限は表示時にもJavaScriptで確かめる
-            new = f'<span class="new" data-until="{until.isoformat()}">{t["new"]}</span>'
-    return f'''
-    <a class="mini" href="{href}"><img class="ic" src="{pre}{a["icon"]}" alt="">
-      <div><h3>{e(a["name"][lang])}{new}</h3>
-      <p>{e(a["short"][lang])}</p><span class="meta">{e(a["category"][lang])}</span></div></a>'''
+SCRIPT = """<script>
+(() => {
+  // NEW の印：期限を過ぎていたら消す
+  const today = new Date().toISOString().slice(0, 10);
+  document.querySelectorAll('[data-until]').forEach(n => { if (today >= n.dataset.until) n.remove(); });
 
-# ピックアップは "pickup": true のアプリから、開くたびにランダムで1つ表示する(JavaScriptが無い環境では最初の1つ)
-PICK_SCRIPT = """<script>
-(function () {
-  var cards = document.querySelectorAll('[data-pickup]');
-  if (cards.length >= 2) {
-  var pick = Math.floor(Math.random() * cards.length);
-  cards.forEach(function (c, i) { c.hidden = i !== pick; });
+  // 見出しを一文字ずつに分け、墨がにじむように出す
+  const h1 = document.querySelector('.hero h1');
+  let i = 0;
+  [...h1.childNodes].forEach(n => {
+    if (n.nodeType !== 3) return;
+    const frag = document.createDocumentFragment();
+    [...n.textContent].forEach(c => {
+      const sp = document.createElement('span');
+      sp.className = 'ch'; sp.textContent = c; sp.style.setProperty('--i', i++);
+      frag.append(sp);
+    });
+    n.replaceWith(frag);
+  });
+  h1.style.setProperty('--n', i);
+
+  // 各段がスクロールでふわっと出る
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    }), { threshold: .12 });
+    els.forEach(el => io.observe(el));
+  } else {
+    els.forEach(el => el.classList.add('in'));
   }
-})();
-(function () {
-  var today = new Date().toISOString().slice(0, 10);
-  document.querySelectorAll('[data-until]').forEach(function (n) { if (today >= n.dataset.until) n.remove(); });
+
+  // 枠の上をカーソルの光がなでる
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.shot').forEach(el => el.addEventListener('pointermove', ev => {
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', (ev.clientX - r.left) + 'px');
+    el.style.setProperty('--my', (ev.clientY - r.top) + 'px');
+  }));
 })();
 </script>"""
 
 def page(lang, apps):
     t = TEXT[lang]; pre = "" if lang == "ja" else "../"
-    pickups = [a for a in apps if a.get("pickup", True)]
-    feat = f'\n  <p class="label">{t["featured"]}</p>' + "".join(pickup_card(a, lang, t, pre, i) for i, a in enumerate(pickups))
-    grid = f'\n  <p class="label">{t["all"]}</p>\n  <div class="grid">' + "".join(list_card(a, lang, t, pre) for a in apps) + "\n  </div>"
+    sections = "".join(app_section(a, lang, t, pre, i + 1) for i, a in enumerate(apps))
     href, label = t["lang_link"]
     return f'''<!doctype html>
 <html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{t["tagline"]}</title>
+<title>{t["title"]}</title>
 <meta name="description" content="{t["meta"]}">
-<meta name="theme-color" content="#2563eb">
+<meta name="theme-color" content="{THEME}">
 <link rel="icon" href="{pre}images/avatar.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{pre}style.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <div class="wrap">
-<header class="head">
-  <a class="me" href="{pre or './'}"><img src="{pre}images/avatar.png" alt=""><span><strong>{t["tagline"]}</strong></span></a>
-  <div class="head-links">
-    <a class="pill" href="https://x.com/{X_ID}" aria-label="X">{XLOGO}<span>@{X_ID}</span></a>
-    <a class="pill" href="{href}">{label}</a>
-  </div>
-</header>
-<p class="lead">{t["lead"]}</p>
-<main>{feat}{grid}
-  <div class="contact"><p>{t["contact"]}</p><a class="btn btn-line" href="{FORM}">{t["form"]}</a></div>
-</main>
-<footer>© 2026 Takeshi Saito</footer>
+  <header>
+    <a class="me" href="{pre or './'}"><img src="{pre}images/avatar.png" alt=""><span>Saito</span></a>
+    <nav>
+      <a href="#apps">{t["nav_apps"]}</a>
+      <a href="#contact" class="hide-sp">{t["contact_title"]}</a>
+      <a href="https://x.com/{X_ID}">X</a>
+      <a href="{href}">{label}</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">SAITO — INDIE iPHONE APPS</p>
+    <h1 class="mincho">{t["heading"]}<em>.</em></h1>
+    <p>{t["lead"]}</p>
+  </section>
+
+  <main id="apps">{sections}
+  </main>
+
+  <section class="contact reveal" id="contact">
+    <div>
+      <h2 class="mincho">{t["contact_title"]}</h2>
+      <p>{t["contact"]}</p>
+    </div>
+    <div class="links"><a href="{FORM}">{t["form"]}<span>↗</span></a></div>
+  </section>
+
+  <footer>
+    <span class="mincho">{t["title"]}</span>
+    <span>© 2026 Takeshi Saito</span>
+  </footer>
 </div>
-{PICK_SCRIPT}
+{SCRIPT}
 </body>
 </html>
 '''
@@ -129,7 +173,8 @@ def main():
     apps = json.loads((ROOT / "apps.json").read_text())
     out = {"ja": ROOT / "index.html", "en": ROOT / "en/index.html"}
     for lang, path in out.items():
-        if path: path.parent.mkdir(exist_ok=True); path.write_text(page(lang, apps))
+        path.parent.mkdir(exist_ok=True)
+        path.write_text(page(lang, apps))
 
 if __name__ == "__main__":
     main()
