@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent
 X_ID = "saito_dev"  # Xのアカウント(@なし)
 NEW_DAYS = 30  # 公開日("released")から何日間「NEW」を出すか
 FORM = "https://docs.google.com/forms/d/e/1FAIpQLSfMMRAh4BeQ_ZcTgsZDuV5MzYL22TjPRAj4yL7NFHdgxtLDCQ/viewform"
-THEME = "#2c2a27"  # style.css の --paper と同じ色
+THEME = "#dedad4"  # style.css の --paper と同じ色
 
 TEXT = {
     "ja": dict(lang_link=("en/", "English"), title="Saitoの個人開発アプリ", heading="Saitoの<br>個人開発アプリ",

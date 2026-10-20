@@ -1,13 +1,14 @@
-/* 消炭色の地に、生成りの文字と朱の差し色 */
+/* グレージュの地に、墨の文字と朱の差し色 */
 :root {
-  --paper: #2c2a27;
-  --panel: #363430;
-  --ink: #e9e4da;
-  --muted: #aaa397;
-  --line: #45423d;
-  --frame: #181715;
-  --shu: #d5603f;
-  color-scheme: dark;
+  --paper: #dedad4;
+  --panel: #cfcac2;
+  --ink: #2a2622;
+  --muted: #6e675e;
+  --line: #c2bcb3;
+  --frame: #2a2622;
+  --shu: #be4a2f;
+  --shadow: rgba(50, 40, 30, .35);
+  color-scheme: light;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -45,10 +46,10 @@ nav a:hover { color: var(--ink); }
 .shot > * { position: relative; z-index: 1; }
 .shot .phone {
   width: 40%; border-radius: 26px; border: 7px solid var(--frame);
-  box-shadow: 0 30px 50px -20px rgba(0, 0, 0, .5);
+  box-shadow: 0 30px 50px -20px var(--shadow);
   transition: transform .8s cubic-bezier(.2, .7, .2, 1);
 }
-.shot .big-icon { width: 34%; border-radius: 22%; box-shadow: 0 24px 40px -18px rgba(0, 0, 0, .5); }
+.shot .big-icon { width: 34%; border-radius: 22%; box-shadow: 0 24px 40px -18px var(--shadow); }
 .app:hover .shot .phone { transform: translateY(-6px); }
 .shot .num { position: absolute; left: 22px; top: 14px; font-size: 13px; color: var(--shu); letter-spacing: .2em; }
 .text .kind { font-size: 12px; color: var(--muted); letter-spacing: .2em; display: flex; align-items: center; gap: 12px; }
@@ -95,7 +96,7 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 48px; display: flex;
 @keyframes stamp { to { opacity: 1; transform: scale(1); } }
 /* 枠の上をカーソルの光がなでる */
 .shot::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity .4s;
-  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(233, 228, 218, .07), transparent 70%); }
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, .28), transparent 70%); }
 .shot:hover::after { opacity: 1; }
 
 @media (prefers-reduced-motion: reduce) {
