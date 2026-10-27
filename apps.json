@@ -166,5 +166,61 @@
     },
     "pickup": true,
     "released": "2026-10-19"
+  },
+  {
+    "id": "okusuri-nonda-ne",
+    "icon": "images/okusuri-nonda-ne.png",
+    "screenshot": {
+      "ja": "images/okusuri-nonda-ne_screen_ja.jpg",
+      "en": "images/okusuri-nonda-ne_screen_ja.jpg"
+    },
+    "appStore": {
+      "ja": "https://apps.apple.com/jp/app/id6824487497",
+      "en": "https://apps.apple.com/jp/app/id6824487497"
+    },
+    "support": {
+      "ja": "okusuri-nonda-ne/",
+      "en": "okusuri-nonda-ne/"
+    },
+    "privacy": {
+      "ja": "okusuri-nonda-ne/privacy/",
+      "en": "okusuri-nonda-ne/privacy/"
+    },
+    "name": {
+      "ja": "お薬飲んだね",
+      "en": "Okusuri Nonda Ne"
+    },
+    "subtitle": {
+      "ja": "飲んだ薬をワンタップで記録",
+      "en": "Log your meds in one tap"
+    },
+    "category": {
+      "ja": "ヘルスケア／フィットネス ・ 無料",
+      "en": "Health & Fitness · Free"
+    },
+    "short": {
+      "ja": "ロック画面から、飲んだ薬をワンタップで記録。",
+      "en": "Log your meds from the Lock Screen in one tap."
+    },
+    "description": {
+      "ja": "朝・昼・夜に飲んだ薬を、ロック画面のウィジェットや通知からワンタップで記録します。「今日飲んだっけ？」を、iPhoneを手に取るだけで確かめられます。",
+      "en": "Log your morning, noon, and evening meds in one tap from the Lock Screen widget or a notification. Just pick up your iPhone to check whether you took them today."
+    },
+    "tags": {
+      "ja": [
+        "ロック画面で記録",
+        "通知から記録",
+        "アカウント不要",
+        "広告なし"
+      ],
+      "en": [
+        "Log from Lock Screen",
+        "Log from notifications",
+        "No account",
+        "No ads"
+      ]
+    },
+    "pickup": true,
+    "released": "2026-10-21"
   }
 ]
