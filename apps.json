@@ -222,5 +222,61 @@
     },
     "pickup": true,
     "released": "2026-10-21"
+  },
+  {
+    "id": "neko-no-seki",
+    "icon": "images/neko-no-seki.png",
+    "screenshot": {
+      "ja": "images/neko-no-seki_screen_ja.jpg",
+      "en": "images/neko-no-seki_screen_ja.jpg"
+    },
+    "appStore": {
+      "ja": "https://apps.apple.com/jp/app/id6827537798",
+      "en": "https://apps.apple.com/jp/app/id6827537798"
+    },
+    "support": {
+      "ja": "neko-no-seki/",
+      "en": "neko-no-seki/"
+    },
+    "privacy": {
+      "ja": "neko-no-seki/privacy/",
+      "en": "neko-no-seki/privacy/"
+    },
+    "name": {
+      "ja": "ねこの席",
+      "en": "Neko no Seki"
+    },
+    "subtitle": {
+      "ja": "座布団にねこを座らせる推理パズル",
+      "en": "A logic puzzle of seating cats on cushions"
+    },
+    "category": {
+      "ja": "ゲーム ・ 無料",
+      "en": "Game · Free"
+    },
+    "short": {
+      "ja": "座布団にねこを1匹ずつ座らせる、やさしい推理パズル。",
+      "en": "A gentle logic puzzle where you seat one cat on each cushion."
+    },
+    "description": {
+      "ja": "座布団にねこを1匹ずつ座らせる、やさしい推理パズル。魚の数字を手がかりに「ここしかない」を見つけます。残機も時間制限もないので、ゆっくり考えられます。",
+      "en": "A gentle logic puzzle where you seat one cat on each cushion. Use the fish numbers to find the only possible spot — no lives, no timer, just think at your own pace."
+    },
+    "tags": {
+      "ja": [
+        "ルールは3つだけ",
+        "答えは必ず1つ",
+        "残機・時間制限なし",
+        "アカウント不要"
+      ],
+      "en": [
+        "Just 3 rules",
+        "One unique solution",
+        "No lives, no timer",
+        "No account needed"
+      ]
+    },
+    "pickup": true,
+    "released": "2026-11-06"
   }
 ]
